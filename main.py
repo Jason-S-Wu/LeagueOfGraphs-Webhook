@@ -1,9 +1,11 @@
 import os
+import sched
 import requests
 import json
 import bs4
 import time
 from dotenv import load_dotenv
+from datetime import datetime, timezone
 
 load_dotenv()
 
@@ -120,17 +122,24 @@ def update():
         return
 
 
+def main():
+    scheduler = sched.scheduler(time.time, time.sleep)
 
-# loop update every minute
-def loop():
-    while True:
+    def scheduled_update():
+        print(f"[{datetime.now(timezone.utc)} UTC] Updating...")
         try:
             update()
-            time.sleep(5)
-        except KeyboardInterrupt:
-            break
         except:
-            continue
+            pass
+        finally:
+            # Schedule the next update in 60 seconds
+            scheduler.enter(60, 1, scheduled_update)
 
+    # Schedule the first update
+    scheduler.enter(0, 1, scheduled_update)
+
+    # Run the scheduler
+    scheduler.run()
+    
 if __name__ == '__main__':
-    loop()
+    main()
