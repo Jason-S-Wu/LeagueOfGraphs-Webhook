@@ -95,7 +95,6 @@ class LeagueStatsTracker:
                 return None
                 
             matches_session = self._extract_text(behavior_soup, 'div', 'number solo-number', 1)
-            print(matches_session)
             if not matches_session:
                 return None
 
@@ -139,8 +138,6 @@ class LeagueStatsTracker:
         """Send stats update to Discord webhook"""
         try:
             rank, lp, wins, losses, total_games, win_loss_percent, last_game, matches_session = stats_data
-
-            print(matches_session)
             
             matches_session_hours = matches_session.split(' ')
             # get the days
