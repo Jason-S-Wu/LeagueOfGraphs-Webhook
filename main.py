@@ -156,7 +156,7 @@ class LeagueStatsTracker:
             webhook_data = {
                 'content': None,
                 'embeds': [{
-                    "title": "Kevster Check",
+                    "title": f"{self.summoner_name} Check",
                     "description": (
                         f"**__Current Season Stats__**\n\n"
                         f"Current Rank: **{rank}**\n"
