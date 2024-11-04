@@ -234,10 +234,10 @@ def main():
     while True:
         try:
             tracker.update()
-            time.sleep(5)  # 5 minutes between checks
+            time.sleep(5)
         except Exception as e:
             logging.error(f"Error in main loop: {str(e)}")
-            time.sleep(5)  # Wait a minute before retrying on error
+            time.sleep(5)
             continue
 
 if __name__ == "__main__":
