@@ -209,7 +209,7 @@ class LeagueStatsTracker:
 
             # Compare relevant fields
             if any(old_data.get(key) != value for key, value in zip(
-                ['rank', 'lp', 'wins', 'losses', 'total_games', 'win_loss_percent', 'last_game', 'matches_session'],
+                ['rank', 'lp', 'wins', 'losses', 'total_games', 'win_loss_percent', 'last_game'],
                 stats_data
             )):
                 self.write_data(stats_data)
